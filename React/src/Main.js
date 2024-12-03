@@ -1,14 +1,12 @@
 import React from 'react';
 import './index.css';
-import Countermouse from './Fils/musecount';
-import Clickcount from './Fils/clickcount';
-import Reducercunter from './useReducer/Reducer';
+import FreeShoppingPage from './Free-Shopping-pege/index-of-page';
 
 
 export default function Mainpeg(){
     return(
-        <div>
-            <Reducercunter/>
+        <div className='bg-componentBg-primeryBg min-h-screen box-border m-0 p-0'>
+            <FreeShoppingPage/>
         </div>
     )
 }

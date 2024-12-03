@@ -4,7 +4,39 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      colors: {
+        componentBg: {
+          mainBg : '#262729',
+          primeryBg : '#1E1E1E',
+          buttonBg : '#36373B'
+        },
+        textsColor: {
+          texts: "#FFFFFF",
+          routeText: '#4D4D4D'
+        },
+        btnColors: {
+          Mailblue: '#1481FE'
+        }
+      },
+
+      fontSize:{
+        logoSize: '24px',
+        nameSize: '16px'
+      },
+
+      spacing:{
+        YP: "20px",
+        XP: "64px",
+        topSpace: '100px'
+      },
+
+      screens:{
+
+      },
+
+    },
   },
   plugins: [],
 }
