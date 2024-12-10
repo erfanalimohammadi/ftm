@@ -7,7 +7,6 @@ import Clock from '../Icons/clock.svg'
 
 
 export default function FreeShoppingPage(){
-    
     return(
         <div className="flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full box-border">
             <FirstHeader />

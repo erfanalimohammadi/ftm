@@ -5,7 +5,7 @@ export default function Typer(){
         <div className="">
             <h3 className="text-textsColor-texts text-nameSizev font-medium">Account Type (Leverage 1:100)</h3>
             
-            <div className='flex flex-row justify-between items-center flex-wrap gap-[16px] mt-[10px]'>
+            <div className='flex flex-row justify-start items-center flex-wrap gap-[16px] mt-[10px]'>
                 {['Prodcut name', 'Product name | Swing'].map((amount) => (
                         <button
                             key={amount}
