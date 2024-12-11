@@ -10,7 +10,8 @@ module.exports = {
         componentBg: {
           mainBg : '#262729',
           primeryBg : '#1E1E1E',
-          buttonBg : '#36373B'
+          buttonBg : '#36373B',
+          inputBg : '#36373B'
         },
         textsColor: {
           texts: "#FFFFFF",

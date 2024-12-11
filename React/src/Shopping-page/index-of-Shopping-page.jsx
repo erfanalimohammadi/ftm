@@ -9,7 +9,7 @@ import FlagIcon from '../Icons/Flag.svg'
 
 export default function FreeShoppingPage(){
     return(
-            <div className="flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full box-border">
+            <div className="flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full">
                         <FirstHeader />
 
                         <div className="flex flex-row w-full min-h-screen">
@@ -32,7 +32,7 @@ export default function FreeShoppingPage(){
                                         <span className="text-textsColor-texts text-nameSize font-bold">Configure your requirements and start FTMO Challenge</span>
                                     </h3>
 
-                                    <div className="w-full p-4 flex flex-col justify-between items-start gap-y-[16px] bg-componentBg-mainBg rounded-xl">
+                                    <div className="w-full p-[16px] flex flex-col justify-between items-center gap-y-[16px] bg-componentBg-mainBg rounded-xl">
                                         <StartChallange/>
                                     </div>
 
