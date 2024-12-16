@@ -29,3 +29,8 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+.shadow-for-circle1{
+    box-shadow: 0px 0px 200px -20px #1481FE;
+    border-radius: 150px;
+    filter:drop-shadow(0px 0px 10px #1481FE);
+}
