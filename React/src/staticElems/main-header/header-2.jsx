@@ -24,7 +24,7 @@ export default function Header2() {
         }, [lastScroll])
 
     return(
-        <div className={`flex flex-row justify-between items-center py-YP px-XP bg-componentBg-mainBg fixed top-0 left-0 w-full  transition-all duration-500 ease-linear ${showScroll ? " translate-y-0" : "translate-y-[-77px]"}`}>
+        <div className={`flex z-[999] flex-row justify-between items-center py-YP px-XP bg-componentBg-mainBg fixed top-0 left-0 w-full  transition-all duration-500 ease-linear ${showScroll ? " translate-y-0" : "translate-y-[-77px]"}`}>
 
                 <div className="">
                     {/* Logo */}

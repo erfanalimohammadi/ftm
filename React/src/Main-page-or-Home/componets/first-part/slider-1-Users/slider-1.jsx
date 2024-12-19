@@ -12,7 +12,7 @@ export default function Slider({ name , region , bg , img , counteryIcon}){
         >
             <div className="absolute inset-0 bg-black/80"></div>
 
-            <div className="mx-auto mt-3 flex flex-row justify-start items-center p-1 rounded-lg gap-x-1 glass-effect w-[80%]">
+            <div className="mx-auto mt-3 flex flex-row justify-start items-center p-1 rounded-lg gap-x-1 glass-effect w-[85%]">
                 <img src={counteryIcon} className='w-[39px] h-24px]' alt="" />
                 <div className="flex flex-col justify-center items-start ">
                     <h3 className='text-textsColor-texts text-[10px] leading-[12px] font-bold'>{name}</h3>

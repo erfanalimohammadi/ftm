@@ -29,7 +29,7 @@ export default function UsersSlider(){
         return visibleSlides;
       };
     return (
-        <div className="flex flex-col justify-center items-center w-full gap-y-8 mt-[120px]">
+        <div className="flex flex-col justify-center items-center w-full gap-y-8">
 
             <div className="w-[1376px] flex flex-row justify-between items-center absolute right-auto left-auto translate-y-[-135px]">  
                 <button
@@ -51,13 +51,13 @@ export default function UsersSlider(){
 
             </div>
 
-            <div className="flex flex-row justify-between gap-x-10 items-center min-w-[200px] max-w-[1168px]">
+            <div className="flex flex-row justify-between gap-x-10 items-center w-[85%]">
                 {getVisibleSlides().map((slides) => (
                     <Slider name={slides.name} region={slides.region} bg={slides.bg} img={slides.img} counteryIcon={slides.counteryIcon}/>
                 ))}
             </div>
 
-            <div className="flex flex-col justify-center items-start min-w-[200px] max-w-[1168px] gap-y-4">
+            <div className="flex flex-col justify-center items-start w-[85%] gap-y-4">
                 <h3
                 className='text-[32px] text-textsColor-texts font-medium leading-[48px]'
                 >Enhance your skills with Modern Prop Trading Firm</h3>

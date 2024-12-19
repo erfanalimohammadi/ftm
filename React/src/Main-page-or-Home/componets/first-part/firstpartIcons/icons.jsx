@@ -2,7 +2,7 @@ import React from "react";
 
 export default function IconsPart() {
     return(
-        <div className="mt-1 flex flex-col gap-y-8">
+        <div className="flex flex-col gap-y-8">
                     
             <div className=""> 
                     <svg className='z-10 h-[204px] absolute top-' width="1440" height="204" viewBox="0 0 1440 204" fill="none" xmlns="http://www.w3.org/2000/svg">
