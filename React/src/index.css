@@ -46,9 +46,10 @@
     border: 0.25px solid #727272;
 }
 .glass-effect2{
-    background: rgba( 20, 129, 254, 0.12 );
-    backdrop-filter: blur( 14.5px );
-    -webkit-backdrop-filter: blur( 14.5px );
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8.8px);
+    -webkit-backdrop-filter: blur(8.8px);
 }
 .bg-1{
     background-image: url('./Icons/pngIcons/countereis/Europe-bg.jpg');
