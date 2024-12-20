@@ -4,6 +4,7 @@ import FirstPart from './componets/first-part/entrance';
 import IconsPart from './componets/first-part/firstpartIcons/icons';
 import UsersSlider from './componets/first-part/slider-1-Users/index-Slider';
 import Steps from './componets/second-part/Evaluation-Process-Part/Evaluation-Process';
+import TradingObjectives from './componets/second-part/Trading-Objectives/index-of-TradingObjectives';
 export default function Homepage(){
 
     return(
@@ -15,9 +16,9 @@ export default function Homepage(){
                 <IconsPart/>
                 <UsersSlider/>
                 <Steps/>
+                <TradingObjectives/>
             </div>
-
-
+            <div className="h-96"></div>
         </div>
     )
 }

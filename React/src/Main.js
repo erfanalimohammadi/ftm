@@ -9,7 +9,7 @@ import Homepage from './Main-page-or-Home/index-of-Main';
 export default function MainApp(){
     //این صفحه هنوز تکمبل نشده و عمل روتینگ هنوز اعمال نشده جهت اضافه کردن صفحه جدید کامپونتت قبلی را کامنت کنید 
     return(
-        <div className='bg-componentBg-primeryBg min-h-screen box-border m-0 p-0'>
+        <div className=' overflow-style bg-componentBg-primeryBg min-h-screen box-border m-0 p-0'>
             <Homepage/>
             {/* <ShoppingPage/> */}
             {/* <FreeShoppingPage/> */}

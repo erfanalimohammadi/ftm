@@ -72,3 +72,24 @@
     -webkit-mask-composite: xor; */
     background-clip: padding-box;
 }
+::-webkit-scrollbar{
+    width: 3px;
+    background-color: #1E1E1E;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #1481FE;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+::-webkit-scrollbar-track{
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
