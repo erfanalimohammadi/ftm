@@ -57,11 +57,25 @@
     background-size: cover;
     object-fit: cover;
 }
-.gradient-border {
+.gradient-border{
     @apply text-white;
     position: relative;
     border-radius: 16px;
     padding: 2px;
+    /* mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor; */
+    background-clip: padding-box;
+}
+.gradient-border-left{
+    @apply text-white;
+    position: relative;
+    padding: 1px;
     /* mask: 
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
@@ -92,4 +106,20 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+.glass-effect3{
+    @apply text-white ; 
+    /* From https://css.glass */
+    background: rgba(20, 129, 254, 0.16);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 2px solid #1481FE;
+}
+.glass-effect4{
+    @apply text-white ; 
+    /* From https://css.glass */
+    background: rgba(38, 39, 41, 0.18);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(3.6px);
 }

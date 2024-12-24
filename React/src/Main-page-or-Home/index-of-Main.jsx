@@ -1,10 +1,12 @@
-import React, {useState , useEffect} from 'react';
+import React from 'react';
 import Header2 from '../staticElems/main-header/header-2';
 import FirstPart from './componets/first-part/entrance';
 import IconsPart from './componets/first-part/firstpartIcons/icons';
 import UsersSlider from './componets/first-part/slider-1-Users/index-Slider';
 import Steps from './componets/second-part/Evaluation-Process-Part/Evaluation-Process';
 import TradingObjectives from './componets/second-part/Trading-Objectives/index-of-TradingObjectives';
+import FindOutSlider from './componets/third-part/FindOut-slider';
+import IconsCountery from './componets/third-part/contreisIcon';
 export default function Homepage(){
 
     return(
@@ -17,8 +19,10 @@ export default function Homepage(){
                 <UsersSlider/>
                 <Steps/>
                 <TradingObjectives/>
+                <FindOutSlider/>
+                <IconsCountery/>
             </div>
-            <div className="h-96"></div>
+            <div className="h-52"></div>
         </div>
     )
 }

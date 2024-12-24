@@ -1,8 +1,6 @@
 import React from "react";
 export default function Slider({ name , region , bg , img , counteryIcon}){
 
-    console.log("sliders => " , name , bg , region , img , counteryIcon)
-
     return(
         <div
         className="relative w-[200px] h-[250px] rounded-lg overflow-hidden shadow-lg bg-cover bg-center bg-no-repeat"
