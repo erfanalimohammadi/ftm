@@ -7,6 +7,7 @@ import Steps from './componets/second-part/Evaluation-Process-Part/Evaluation-Pr
 import TradingObjectives from './componets/second-part/Trading-Objectives/index-of-TradingObjectives';
 import FindOutSlider from './componets/third-part/FindOut-slider';
 import IconsCountery from './componets/third-part/contreisIcon';
+import CommentsSlider from './componets/fourth-part/Comments-Slider/Comments';
 export default function Homepage(){
 
     return(
@@ -21,7 +22,8 @@ export default function Homepage(){
                 <TradingObjectives/>
                 <FindOutSlider/>
                 <IconsCountery/>
-            </div>
+                <CommentsSlider/>
+            </div>             
             <div className="h-52"></div>
         </div>
     )

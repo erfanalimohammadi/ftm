@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState , useEffect } from 'react';
 import notfication from '../Icons/vuesax/linear/notification.svg'
 import Avatar from '../Icons/Avatar.svg'
 

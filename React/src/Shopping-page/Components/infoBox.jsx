@@ -106,7 +106,7 @@ export default function InfoBox() {
                                 type="text"
                                 value={formData[field]}
                                 onChange={handleFormData}
-                                className={`p-3 text-textsColor-texts text-[16px] font-medium bg-componentBg-inputBg bg-componentBg-inputBg focus:border-[2px] outline-none rounded-[8px]  ${
+                                className={`p-3 text-textsColor-texts text-[16px] font-medium  bg-componentBg-inputBg focus:border-[2px] outline-none rounded-[8px]  ${
                                 errors.personinfo ? "border-red-500" : " border-btnColors-Mailblue "
                                 }`}
                                 placeholder={`Enter your ${field}`}
