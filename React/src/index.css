@@ -123,3 +123,14 @@
     backdrop-filter: blur(3.6px);
     -webkit-backdrop-filter: blur(3.6px);
 }
+
+.scroll-container {
+    height: 410px;
+    width: 100%; /* عرض کانتینر */
+    overflow-x: scroll; /* فعال کردن اسکرول محور X */
+    white-space: nowrap; /* جلوگیری از شکست خطوط */
+  }
+
+  .scroll-item {
+    width: 296px; /* عرض آیتم */
+  }

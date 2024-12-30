@@ -21,10 +21,10 @@ export default function FirstPart(){
             </div>
 
             <div className="flex flex-row justify-between items-center gap-x-8">
-                <button className="w-[208px] flex justify-center items-center py-[16px] px-[32px] bg-btnColors-Mailblue rounded-lg text-textsColor-texts text-nameSize font-bold outline-none border-[2px] border-solid border-btnColors-Mailblue hover:bg-componentBg-primeryBg hover:text-btnColors-Mailblue transition-all duration-500 delay-100">
+                <button className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-btnColors-Mailblue rounded-lg text-textsColor-texts text-nameSize font-bold outline-none border-[2px] border-solid border-btnColors-Mailblue hover:bg-componentBg-primeryBg hover:text-btnColors-Mailblue transition-all duration-500 delay-100">
                     FTMO CHALLENGE
                 </button>
-                <button className="w-[208px] flex justify-center items-center py-[16px] px-[32px] bg-componentBg-primeryBg rounded-lg text-btnColors-Mailblue text-nameSize font-bold border-[2px] border-solid border-btnColors-Mailblue hover:bg-btnColors-Mailblue hover:text-textsColor-texts transition-all duration-500 delay-100">
+                <button className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-componentBg-primeryBg rounded-lg text-btnColors-Mailblue text-nameSize font-bold border-[2px] border-solid border-btnColors-Mailblue hover:bg-btnColors-Mailblue hover:text-textsColor-texts transition-all duration-500 delay-100">
                     FREE TRIAL
                 </button>
             </div>
