@@ -8,6 +8,12 @@ import TradingObjectives from './componets/second-part/Trading-Objectives/index-
 import FindOutSlider from './componets/third-part/FindOut-slider';
 import IconsCountery from './componets/third-part/contreisIcon';
 import CommentsSlider from './componets/fourth-part/Comments-Slider/Comments';
+import YoutubeSlider from './componets/fourth-part/youtubers-Slider/slider';
+import FooterPage from './componets/last-part/footer-of-page';
+
+// این صفحه هنوز درحال تکمیل است ...
+
+import Footer from '../staticElems/footer/Footer';
 export default function Homepage(){
 
     return(
@@ -23,8 +29,10 @@ export default function Homepage(){
                 <FindOutSlider/>
                 <IconsCountery/>
                 <CommentsSlider/>
+                <YoutubeSlider/>
+                <FooterPage/>
             </div>             
-            <div className="h-52"></div>
+            <Footer/>
         </div>
     )
 }
