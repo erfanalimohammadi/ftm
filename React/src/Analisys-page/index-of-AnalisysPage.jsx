@@ -4,8 +4,8 @@ import Sidebar from "../staticElems/sidebar";
 import RouterElement from "../staticElems/routerElem";
 import Account from "./componets/Account";
 import Buttons from "./componets/Buttons";
-import Chart from "./componets/Chart";
 import Trial from "./componets/Free-Trial";
+import AnalisysChart from './componets/Chart'
 export default function Analisys(){
 
     return (
@@ -19,7 +19,7 @@ export default function Analisys(){
                     <Account/>
                     <Buttons/>
                     <div className="w-full flex flex-row justify-between items-start gap-x-[32px]">
-                        <Chart/>
+                        <AnalisysChart/> 
                         <Trial/>
                     </div>
                 </div>

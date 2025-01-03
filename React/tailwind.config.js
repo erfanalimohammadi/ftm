@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         componentBg: {
           mainBg : '#262729',
+          mainBg2 : '#292A2D',
           primeryBg : '#1E1E1E',
           buttonBg : '#36373B',
           inputBg : '#36373B'

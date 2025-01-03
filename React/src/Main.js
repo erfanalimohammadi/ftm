@@ -13,10 +13,10 @@ export default function MainApp(){
         <BrowserRouter>
             <div className=' overflow-style bg-componentBg-primeryBg min-h-screen box-border m-0 p-0'>
                 <Routes>
-                    <Route path='/' element={<Homepage/>} />
+                    <Route path='/ff' element={<Homepage/>} />
                     <Route path='/shoppinge' element={<ShoppingPage/>} />
                     <Route path='/shopping/free' element={<FreeShoppingPage/>} />
-                    <Route path='/analisys' element={<Analisys/>} />
+                    <Route path='/' element={<Analisys/>} />
                 </Routes>
             </div>
         </BrowserRouter>
