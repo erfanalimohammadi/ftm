@@ -132,6 +132,30 @@
     border: 0.25px solid rgba(255, 255, 255, 0.3);
     color: #090909ca;
 }
+
+.item-1:first-child{
+    border-top-left-radius: 12px;
+}
+.item-1:last-child{
+    border-bottom-left-radius: 12px;
+    border: none;
+}
+
+.item-2:first-child{
+    border-radius: none;
+}
+.item-2:last-child{
+    border-radius: none;
+    border: none;
+}
+
+.item-3:first-child{
+    border-top-right-radius: 12px;
+}
+.item-3:last-child{
+    border-bottom-right-radius: 12px;
+    border: none;
+}
   
 
   
