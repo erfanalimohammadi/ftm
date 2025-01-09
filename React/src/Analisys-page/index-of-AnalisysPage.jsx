@@ -9,6 +9,9 @@ import AnalisysChart from './componets/Chart'
 import LineChart from "./componets/Chart2";
 import Objectives from "./componets/Objective";
 import Options from "./componets/Options";
+import Statistics from "./componets/Statistics";
+import DailySummary from "./componets/Daily-Summary";
+import TradingJournal from "./componets/Trading-Journal";
 export default function Analisys(){
 
     return (
@@ -29,7 +32,32 @@ export default function Analisys(){
                     </div>
                     <LineChart/>
                     <Objectives/>
-                    <Options name={['Trading Journal' , 'Mentor App' , 'Economic Calendar', 'Useful Links']} />
+                    <Options name={['Trading Journal' , 'Mentor App' , 'Economic Calendar' , 'Useful Links']} />
+                    <div className="w-full flex flex-row justify-between items-start gap-x-[32px]">
+                        <Statistics/>
+                        <DailySummary/>
+                    </div>
+                    <TradingJournal/>
+                    <div className="w-full px-8 py-6 bg-btnColors-Mailblue shadow-[0px_0px_10px_#1481FE] rounded-[12px]">
+                        <p className="text-nameSize text-textsColor-texts font-medium text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+                    <div className="w-full p-4 flex flex-col justify-between items-start gap-y-[16px]">
+                        <div className="flex flex-row justify-start items-center gap-x-[12px]">
+                        <h3 className="flex flex-row gap-x-[8px] text-textsColor-texts font-bold text-[12px] underline">
+                            Privacy policy
+                        </h3>
+                        <h3 className="flex flex-row gap-x-[8px] text-textsColor-texts font-bold text-[12px] underline">
+                            Terms & Conditions
+                        </h3>
+                        </div>
+                        <p className="text-justify text-nameSize text-textsColor-texts">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

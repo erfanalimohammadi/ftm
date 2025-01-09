@@ -156,6 +156,9 @@
     border-bottom-right-radius: 12px;
     border: none;
 }
+.t-rows:nth-child(even){
+    background-color: #292A2D;
+}
   
 
   
