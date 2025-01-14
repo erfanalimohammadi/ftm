@@ -32,10 +32,10 @@ export default function Methods(){
 
                 <div className="w-[49%] flex flex-col justify-center items-center rounded-[16px] bg-componentBg-mainBg gap-y-[12px] py-4">
                     <div className="w-full flex flex-col justify-center items-center gap-y-[12px] ">
-                        <img className="w-[221px] h-[51px] object-cover"  src={"https://s3-alpha-sig.figma.com/img/ffc1/8433/701aa33a216a0a3d1c39de32d0efb384?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q8Vcf4OxmYCdis0Ug0eih2OpVOQ02hF2fcb0bYvE6c8gekSBj8uB~Ggv07xqcYpNO1ia4Vtjqq60wvwmrg2mKGhUH~68jnKxn134oGX24naBS1RdbKp7ZBpvRknW-DKyNUK0TxhoRrEAg3S6rO7AucTHXN2qRlvF51PVT6ng9HTJ26u-QLM2iT5zJMIWI2~zj2BivagWVnqxcIaVXE5fzgj3a1i2CT8SkpPp7hiItMuNoKbZ3PO8sni3MhBCdDTeJQhBpGvnibmx2WwjmQ8O-tIz4aGwAaJQN4MpStrvfY-aMVVmUdWR3uysL~Sl-9lgmuo-NQrCZEMu6vnNCQR26A__"} alt="img" />
+                        <img className="w-[221px] h-[51px] object-cover"  src={"https://s3-alpha-sig.figma.com/img/a946/3a1f/04525e43d810bd60183053b3d65cbc59?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=b7SJXnkZSSIKjwVPGRaXiYDOpE-Pkd~bPU8zNiqF0rlx9ICnr3429sAdiXOqatgkm0jj6BghMuJt3z8Ba4N9FXAMKn3g-oqGuTwqIxpXOnri0ejygxp7NjJVQN7eVTRVlcQx4SsgU~SFUymxqa5~A1pVLfFjxvIVKoNP9xpJV4Xp6-srxW7E4SfPb1TdNyNnRGXRNYdrtosvmzroSrxsDfVpj2dNo872iNhfvS~w9e~7XWd1SIOacQyd5o4dLCDR6yIXwCaKAmvEqx3NH98j8xDskeP0hl6ZlVi30C0F6qg1SWQJ8~rvr5TJPJz53UZvIQCwHWVCAL9Ke5JDQftF0Q__"} alt="img" />
                         <div className="w-full flex flex-col justify-center items-center gap-y-[10px]">
                             <span className="text-nameSize text-textsColor-texts font-light">+3% Fee</span>
-                            <span className="text-nameSize text-textsColor-texts font-light">$170,03</span>
+                            <span className="text-nameSize text-textsColor-texts font-light">11,903 Rials</span>
                         </div>
                     </div>
                     <div className="h-[0.25px] w-full bg-white "></div>

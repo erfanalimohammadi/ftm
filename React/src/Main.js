@@ -4,7 +4,7 @@ import FreeShoppingPage from './Free-Shopping-pege/index-of-page';
 import ShoppingPage from './Shopping-page/index-of-Shopping-page'
 import Homepage from './Main-page-or-Home/index-of-Main';
 import Analisys from './Analisys-page/index-of-AnalisysPage';
-import PaymentPage from './Payment-Page/componets/index-Of-Payment';
+import PaymentPage from './Payment-Page/index-Of-Payment';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 
 
