@@ -5,6 +5,7 @@ import ShoppingPage from './Shopping-page/index-of-Shopping-page'
 import Homepage from './Main-page-or-Home/index-of-Main';
 import Analisys from './Analisys-page/index-of-AnalisysPage';
 import PaymentPage from './Payment-Page/index-Of-Payment';
+import Accounts from './Accounts-Page/index-Of-Account';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 
 
@@ -19,7 +20,9 @@ export default function MainApp(){
                     <Route path='/shopping/free' element={<FreeShoppingPage/>} />
                     <Route path='/analisys' element={<Analisys/>} />
                     <Route path='/payment' element={<PaymentPage/>}/>
+                    <Route path='/account' element={<Accounts/>}/>
                 </Routes>
+
             </div>
         </BrowserRouter>
     )
