@@ -1,29 +1,47 @@
-import React from 'react';
-import './index.css';
-import FreeShoppingPage from './Free-Shopping-pege/index-of-page';
-import ShoppingPage from './Shopping-page/index-of-Shopping-page'
-import Homepage from './Main-page-or-Home/index-of-Main';
-import Analisys from './Analisys-page/index-of-AnalisysPage';
-import PaymentPage from './Payment-Page/index-Of-Payment';
-import Accounts from './Accounts-Page/index-Of-Account';
-import { BrowserRouter , Routes , Route } from 'react-router-dom';
+import React, { useEffect } from "react";
+import "./index.css";
 
+// درحال اعمال چندین تغییرات در روتینگ هستم و ممکنه هنوز صفحه بندی ها به درستی کار نکنن و صفحات نمایش داده نشن...
 
-export default function MainApp(){
-    //این صفحه هنوز تکمبل نشده و عمل روتینگ هنوز اعمال نشده جهت اضافه کردن صفحه جدید کامپونتت قبلی را کامنت کنید 
-    return(
-        <BrowserRouter>
-            <div className=' overflow-style bg-componentBg-primeryBg min-h-screen box-border m-0 p-0'>
-                <Routes>
-                    <Route path='/' element={<Homepage/>} />
-                    <Route path='/shoppinge' element={<ShoppingPage/>} />
-                    <Route path='/shopping/free' element={<FreeShoppingPage/>} />
-                    <Route path='/analisys' element={<Analisys/>} />
-                    <Route path='/payment' element={<PaymentPage/>}/>
-                    <Route path='/account' element={<Accounts/>}/>
-                </Routes>
+import Homepage from "./Main-page-or-Home/index-of-Main";
+import NotFound from "./NotFound/NotFound";
 
-            </div>
-        </BrowserRouter>
-    )
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+import { Provider, useDispatch } from "react-redux";
+import store from "./Redux/store";
+import { setPreviousLocation } from "./Redux/store";
+import Account from "./Analisys-page/componets/Account";
+
+function App() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const currentLocation = location.pathname;
+    dispatch(setPreviousLocation(currentLocation));
+    return () => {
+      dispatch(setPreviousLocation(currentLocation));
+    };
+  }, [location, dispatch]);
+
+  return (
+    <div className="overflow-style bg-componentBg-primeryBg min-h-screen box-border m-0 p-0">
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/trader/accountoverview/*" element={<Account/>} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+}
+// درحال اعمال چندین تغییرات در روتینگ هستم و ممکنه هنوز صفحه بندی ها به درستی کار نکنن و صفحات نمایش داده نشن...
+export default function MainApp() {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  );
 }
