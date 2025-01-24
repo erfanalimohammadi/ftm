@@ -7,7 +7,7 @@ import StartChallange from './start-FTMO-challnge';
 // icons...
 import FlagIcon from '../Icons/Flag.svg'
 
-export default function FreeShoppingPage(){
+export default function ShoppingPage(){
     return(
             <div className="flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full">
                         <FirstHeader />

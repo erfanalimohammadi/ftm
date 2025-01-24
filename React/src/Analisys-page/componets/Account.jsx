@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Account(){
+export default function Account({param}){
 
     return(
         <div className=" flex flex-row justify-start items-center w-full bg-componentBg-mainBg rounded-xl py-4 px-6 gap-x-[8px]">
@@ -9,7 +9,7 @@ export default function Account(){
                 <path d="M4 17L8 12.5L11 14.5L18 6L21.5 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <h4 className="text-logoSize text-textsColor-texts font-medium">
-                Account Metrix 1420061385
+                Account Metrix {param}
                 {/* به زودی با بکند ادقام خواهد شد و این بخش هم با بکند تغییر خاوهد کرد! */}
             </h4>
         </div>

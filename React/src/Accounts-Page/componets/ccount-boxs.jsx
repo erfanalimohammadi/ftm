@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Boxs(){
 
     const boxs = [
-        { id: 1 , name: 'Free tiral' ,  firstDSVG : 'M29.8346 16.5003C29.8346 23.8603 23.8613 29.8337 16.5013 29.8337C9.1413 29.8337 3.16797 23.8603 3.16797 16.5003C3.16797 9.14033 9.1413 3.16699 16.5013 3.16699C23.8613 3.16699 29.8346 9.14033 29.8346 16.5003Z' , secondDSVG : "M21.4478 20.7403L17.3145 18.2737C16.5945 17.847 16.0078 16.8203 16.0078 15.9803V10.5137" , firstText : 'Master your skills' , secondText : 'Practice your trading without risking anything' , options : [ 'No eligibility for an FTMO Acount' , '14 days' , 'Basic Account Analysis' , 'Basic Account Analysis'] , buttonName : 'TRY FOR FREE'} ,
+        { id: 1 , name: 'Free tiral' ,  firstDSVG : 'M29.8346 16.5003C29.8346 23.8603 23.8613 29.8337 16.5013 29.8337C9.1413 29.8337 3.16797 23.8603 3.16797 16.5003C3.16797 9.14033 9.1413 3.16699 16.5013 3.16699C23.8613 3.16699 29.8346 9.14033 29.8346 16.5003Z' , secondDSVG : "M21.4478 20.7403L17.3145 18.2737C16.5945 17.847 16.0078 16.8203 16.0078 15.9803V10.5137" , firstText : 'Master your skills' , secondText : 'Practice your trading without risking anything' , options : [ 'No eligibility for an FTMO Acount' , '14 days' , 'Basic Account Analysis' , 'Basic Account Analysis'] , buttonName : 'TRY FOR FREE' , navigate : 'freeshopping'} ,
 
-        { id: 2 , name: 'FTMO Challenge' ,  firstDSVG : 'M21.8346 10.1445H22.6256L29.8342 19.4199H14.7617' , secondDSVG : "M15.0402 26.3771L9.49272 16.0034M9.49272 16.0034L4.5 6.66699H16.6212L21.8913 16.0034H9.49272Z" , firstText : 'Trade up to $200,000 FTMO Account' , secondText : 'Show us your trading skills. Pass the Evaluation Course and receive the FTMO Account!' , options : [ 'We provide you with up to $200,000 FTMO Account' , 'Prove your trading skills' , 'Full Account Analysis' , 'Premium Apps'] , buttonName : 'Start FTMO Challenge'} 
+        { id: 2 , name: 'FTMO Challenge' ,  firstDSVG : 'M21.8346 10.1445H22.6256L29.8342 19.4199H14.7617' , secondDSVG : "M15.0402 26.3771L9.49272 16.0034M9.49272 16.0034L4.5 6.66699H16.6212L21.8913 16.0034H9.49272Z" , firstText : 'Trade up to $200,000 FTMO Account' , secondText : 'Show us your trading skills. Pass the Evaluation Course and receive the FTMO Account!' , options : [ 'We provide you with up to $200,000 FTMO Account' , 'Prove your trading skills' , 'Full Account Analysis' , 'Premium Apps'] , buttonName : 'Start FTMO Challenge' , navigate : 'shopping'} 
     ]
 
     return(
@@ -46,7 +47,7 @@ export default function Boxs(){
                         </div>
 
                         <div className="w-full">
-                            <button className={` ${items.id % 2 === 0 ? "text-textsColor-texts bg-btnColors-Mailblue border-none" : "text-btnColors-Mailblue bg-componentBg-mainBg  border-[1.5px] border-btnColors-Mailblue border-solid" } w-full flex flex-row justify-center items-center py-3 font-bold rounded-[8px]`}>{items.buttonName}</button>
+                            <Link to={`/trader/accountoverview/${items.navigate}`} className={` ${items.id % 2 === 0 ? "text-textsColor-texts bg-btnColors-Mailblue border-none" : "text-btnColors-Mailblue bg-componentBg-mainBg  border-[1.5px] border-btnColors-Mailblue border-solid" } w-full flex flex-row justify-center items-center py-3 font-bold rounded-[8px]`}>{items.buttonName}</Link>
                         </div>
 
                     </div>
