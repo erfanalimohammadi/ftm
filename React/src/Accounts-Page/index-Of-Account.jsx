@@ -38,7 +38,7 @@ export default function TraderAccountOverview() {
   const { routes } = useSelector((state) => state.breadcrumb);
 
 
-  // ایجاد نقشه مسیر به کامپوننت
+
   const componentsMap = {
     Analisys: Analisys,
     ShoppingPage: ShoppingPage,

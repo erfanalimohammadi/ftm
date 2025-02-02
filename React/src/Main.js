@@ -50,8 +50,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Account from './Accounts-Page/index-Of-Account'
 import Homepage from "./Main-page-or-Home/index-of-Main";
 import NotFound from "./NotFound/NotFound";
+import LogIn from "./signUp-signIn-pages/sign-in";
 import store from "./Redux/store";
 import { Provider } from "react-redux";
+
 
 function App() {
   return (
@@ -60,6 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/trader/accountoverview/*" element={<Account/>} />
+          <Route path="/users/login" element={<LogIn/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
