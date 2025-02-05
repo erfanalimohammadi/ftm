@@ -34,6 +34,12 @@ import NotFound from "../NotFound/NotFound";
 import Accounts2 from "./index-Of-Accounts2";
 import PaymentPage from "../Payment-Page/index-Of-Payment";
 
+
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
 export default function TraderAccountOverview() {
   const { routes } = useSelector((state) => state.breadcrumb);
 
@@ -55,11 +61,11 @@ export default function TraderAccountOverview() {
             <Route
                 key={route.path}
                 path={`${route.path}`}
-                element={<Component />}
+                element={<PrivateRoute><Component/></PrivateRoute>}
             />
             );
         })}
-        <Route path="/" element={<Accounts2 />} />
+        <Route path="/" element={<PrivateRoute><Accounts2/></PrivateRoute>} />
         <Route path="*" element={<NotFound />} />
         </Routes>
     </div>

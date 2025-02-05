@@ -45,29 +45,37 @@
 //     </Provider>
 //   );
 // }
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Account from './Accounts-Page/index-Of-Account'
-import Homepage from "./Main-page-or-Home/index-of-Main";
+import React , {lazy , Suspense} from "react";
+import { BrowserRouter, Routes, Route , Navigate } from "react-router-dom";
 import NotFound from "./NotFound/NotFound";
-import LogIn from "./signUp-signIn-pages/sign-in";
 import store from "./Redux/store";
-import { Provider } from "react-redux";
+import { Provider , useSelector } from "react-redux";
 
+const Homepage = lazy(() => import("./Main-page-or-Home/index-of-Main"));
+const LogIn = lazy(() => import("./signUp-signIn-pages/sign-in"));
+const Account = lazy(() => import("./Accounts-Page/index-Of-Account"));
+
+
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  return isAuthenticated ? children : <Navigate to="/users/login" replace />;
+};
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/trader/accountoverview/*" element={<Account/>} />
-          <Route path="/users/login" element={<LogIn/>}/>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/trader/accountoverview/*" element={<PrivateRoute><Account/></PrivateRoute>} />
+            <Route path="/users/login" element={<LogIn/>}/>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+      </Suspense>
       </BrowserRouter>
     </Provider>
   );
 }
 
-export default App;
+export default App ;
