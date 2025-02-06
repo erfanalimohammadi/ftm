@@ -32,11 +32,11 @@ export default function Analisys(){
                         <Account param={id}/>
                         <Buttons/>
                         <div className="w-full flex flex-row justify-between items-start gap-x-[32px]">
-                            <AnalisysChart/> 
-                            <Trial/>
+                            <AnalisysChart maxProfit={4500} maxLoss={-5000} currentBalance={0} />{/**داده هاس چارت اول */}
+                            <Trial param={id}/>
                         </div>
                     </div>
-                    <LineChart/>
+                    <LineChart firstValue={30} secondValue={80} thirdValue={100}/>{/**داده های چارت دوم یا linechart */}
                     <Objectives/>
                     <Options name={['Trading Journal' , 'Mentor App' , 'Economic Calendar' , 'Useful Links']} />
                     <div className="w-full flex flex-row justify-between items-start gap-x-[32px]">

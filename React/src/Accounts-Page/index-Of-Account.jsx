@@ -23,7 +23,7 @@
 //     )
 // }
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route , Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // وارد کردن صفحات
@@ -37,7 +37,7 @@ import PaymentPage from "../Payment-Page/index-Of-Payment";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return isAuthenticated ? children : <Navigate to="/users/login" replace />;
 };
 
 export default function TraderAccountOverview() {

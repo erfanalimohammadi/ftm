@@ -66,6 +66,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
+      {/* به زودی در این قسمت لودیمگ قرار خواهیم داد... */}
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/trader/accountoverview/*" element={<PrivateRoute><Account/></PrivateRoute>} />

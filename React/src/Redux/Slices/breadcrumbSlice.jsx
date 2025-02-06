@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     basePath: "Trader / AccountOverview",
     routes: [
-        { path: "anliays/:id", name: "Account Matrix", address: "Analisys" },
+        { path: "analisys/:id", name: "Account Matrix", address: "Analisys" },
         { path: "shopping", name: "Start FTMO Challenge", address: "ShoppingPage" },
         { path: "freeshopping", name: "Free Trial", address: "FreeShoppingPage" },
         { path: "shopping/payment", name: "Order", address: "PaymentPage" }, 
