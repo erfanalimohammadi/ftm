@@ -36,7 +36,7 @@ export default function Analisys(){
                             <Trial param={id}/>
                         </div>
                     </div>
-                    <LineChart firstValue={30} secondValue={80} thirdValue={100}/>{/**داده های چارت دوم یا linechart */}
+                    <LineChart firstValue={37} secondValue={60} thirdValue={100}/>{/**داده های چارت دوم یا linechart */}
                     <Objectives/>
                     <Options name={['Trading Journal' , 'Mentor App' , 'Economic Calendar' , 'Useful Links']} />
                     <div className="w-full flex flex-row justify-between items-start gap-x-[32px]">

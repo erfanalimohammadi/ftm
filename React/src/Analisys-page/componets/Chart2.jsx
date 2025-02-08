@@ -27,15 +27,32 @@ export default function LineChart({ firstValue , secondValue , thirdValue}){
 
                     </div>
 
-                    <div className={`${firstValue === 0 ? "hidden" : "flex"} flex-row justify-center items-center h-[30px] bg-[#912F38] w-[${firstValue}%] rounded-l-[4px]`}>
-                        <span className="text-textsColor-texts text-nameSize font-medium ">0 - {firstValue} %</span>
-                    </div>
-                    <div className={`${secondValue - firstValue < 0 || secondValue - firstValue === 0 ? "hidden" : "flex"} flex-row justify-center items-center h-[30px] bg-[#926121] w-[${(secondValue - firstValue)}%]`}>
-                        <span className="text-textsColor-texts text-nameSize font-medium ">{firstValue} - {secondValue} %</span>
-                    </div>
-                    <div className={`${thirdValue - secondValue < 0 || thirdValue - secondValue === 0 ? "hidden" : "flex"} flex-row justify-center items-center h-[30px] bg-[#1B776E] w-[${(thirdValue - secondValue)}%] rounded-r-[4px]`}>
-                        <span className="text-textsColor-texts text-nameSize font-medium ">{secondValue} - 100 %</span>
-                    </div>
+                    {firstValue > 0 && (
+                        <div
+                        className="flex flex-row justify-center items-center h-[30px] bg-[#912F38] rounded-l-[4px]"
+                        style={{ width: `${firstValue}%` }}
+                        >
+                        <span className="text-textsColor-texts text-nameSize font-medium">0 - {firstValue} %</span>
+                        </div>
+                    )}
+
+                    {secondValue > firstValue && (
+                        <div
+                        className="flex flex-row justify-center items-center h-[30px] bg-[#926121]"
+                        style={{ width: `${secondValue - firstValue}%` }}
+                        >
+                        <span className="text-textsColor-texts text-nameSize font-medium">{firstValue} - {secondValue} %</span>
+                        </div>
+                    )}
+
+                    {thirdValue > secondValue && (
+                        <div
+                        className="flex flex-row justify-center items-center h-[30px] bg-[#1B776E] rounded-r-[4px]"
+                        style={{ width: `${thirdValue - secondValue}%` }}
+                        >
+                        <span className="text-textsColor-texts text-nameSize font-medium">{secondValue} - 100 %</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
