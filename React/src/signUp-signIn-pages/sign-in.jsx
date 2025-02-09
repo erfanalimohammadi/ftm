@@ -1,55 +1,199 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginSuccess } from "../Redux/Slices/authSlice";
+import { useState , useRef , useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { loginSuccess } from "../Redux/Slices/authSlice";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function LogIn() {
 
 
-  const dispatch = useDispatch();
-  const [rememberMe, setRememberMe] = useState(false);
+  // const dispatch = useDispatch();
+  // const [rememberMe, setRememberMe] = useState(false);
 
-  const handleLogin = () => {
-    const token = "user-auth-token"; 
+  // const handleLogin = () => {
+  //   const token = "user-auth-token"; 
 
-    dispatch(loginSuccess(token));
+  //   dispatch(loginSuccess(token));
 
 
-    window.location.href = "/trader/accountoverview";
-  }
+  //   window.location.href = "/trader/accountoverview";
+  // }
 
-  const [ hide , setHide ] = useState(true)
-  const hideButton = () => {
-    setHide(!hide)
-  }
+  // const [ hide , setHide ] = useState(true)
+  // const hideButton = () => {
+  //   setHide(!hide)
+  // }
+
+  //for registration...
+
+  const [ isSignIn , setIsSignIn ] = useState(false)
+  const [register , setRegister] = useState({
+    gender: "",
+    firstName: '',
+    lastName: '' ,
+    email: '' ,
+    password: '' , 
+    countery : '' ,
+  })
+
+  
+    const handleFormData = (e) => {
+        const { name, value } = e.target;
+        setRegister((prev) => ({ ...prev, [name]: value }));
+    };
+
+//for selectbox of gender
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const selectRef = useRef(null);
+  const selectRef2 = useRef(null);
+  const handleClickOutside = (e) => {
+    if (selectRef.current && !selectRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+  const handleClickOutside2 = (e) => {
+    if (selectRef2.current && !selectRef2.current.contains(e.target)) {
+      setIsOpen2(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside2);
+    return () => document.removeEventListener("mousedown", handleClickOutside2);
+  }, []);
 
   return (
 
-    <div className="w-full min-h-screen bg-componentBg-primeryBg relative flex flex-row justify-center items-center overflow-hidden">
+    <div className="w-full min-h-screen bg-componentBg-primeryBg relative flex flex-row justify-center items-center overflow-x-hidden">
 
-      <div className="w-[35%] flex flex-col justify-center items-center ">
+      <div className="w-[35%] flex flex-col justify-center items-center mt-8 mb-8 ">
 
-        <div className="min-w-[473px] max-w-[200px] flex flex-col items-stretch justify-start gap-y-12">
+        <div className={`min-w-[473px] max-w-[200px] flex flex-col items-stretch justify-start ${isSignIn ? "gap-y-12" : "gap-y-6" }  `}>
 
-          <div className="w-full flex flex-row items-center justify-center gapx-x-[10px] bg-componentBg-buttonBg rounded-[8px] p-2">
-            <div className="w-[49%] bg-btnColors-Mailblue rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2  cursor-pointer">Sing in</div>
-            <div className="w-[49%] bg-componentBg-buttonBg rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2 cursor-pointer">Register</div>
+          <div className="w-full flex flex-row items-center justify-center gap-x-[10px] bg-componentBg-buttonBg rounded-[8px] p-2 relative">
+            <div className={` z-10 w-[49%] absolute ${isSignIn ? "translate-x-[-49%]" : "translate-x-[49%]"} transition-all duration-300 ease-linear h-[40px] bg-btnColors-Mailblue rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2  cursor-pointer`}></div>
+            <div
+            onClick={() => setIsSignIn(true)}
+            className="z-20 w-[49%] rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2  cursor-pointer select-none"><span className="">Sing in</span></div>
+            <div
+            onClick={() => setIsSignIn(false)}
+            className="z-20 w-[49%] rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2 cursor-pointer select-none"><span className="">Register</span></div>
+          </div>
+
+
+          <div ref={selectRef} className="w-full flex flex-col items-start justify-center gap-y-2 relative">
+                <span className="text-nameSize text-textsColor-texts font-bold  select-none">Gender</span>
+                
+                <div
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="w-full cursor-pointer hover:scale-x-[0.99] bg-componentBg-inputBg text-textsColor-texts text-nameSize font-bold px-4 py-3 rounded-[8px] outline-none border-none transition-all duration-300 ease-linear flex flex-row justify-between items-center"
+                >
+                  <span>{register.gender ? register.gender : "Select item"}</span>
+                  <svg
+                    className={`${isOpen ? "rotate-180" : "rotate-0"} transition-all duration-200 ease-linear`}
+                    width="18"
+                    height="9"
+                    viewBox="0 0 18 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.9201 0.950195L10.4001 7.4702C9.63008 8.2402 8.37008 8.2402 7.60008 7.4702L1.08008 0.950195"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="w-full bg-componentBg-inputBg text-textsColor-texts absolute top-[84px] flex flex-col justify-start items-stretch rounded-[8px]"
+                    >
+                      {["Mr.", "Mrs.", "Ms."].map((item) => (
+                        <motion.span
+                          key={item}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => {
+                            setRegister((prev) => ({ ...prev, gender: e.target.textContent }));
+                            setIsOpen(false);
+                          }}
+                          className="px-4 py-2 text-textsColor-texts text-nameSize font-light hover:bg-btnColors-Mailblue hover:text-white transition-all duration-200 ease-linear rounded-[8px] cursor-pointer"
+                        >
+                          {item}
+                        </motion.span>
+                      ))}
+                    </motion.div>
+                  )}
+            </AnimatePresence>
           </div>
 
           <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
-            <label htmlFor='email' className="text-nameSize text-textsColor-texts font-bold ">Email</label>
-            <input id='email' name="email" type="email" className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" />
+            <label htmlFor='name' className="text-nameSize text-textsColor-texts font-bold  select-none">First Name</label>
+            <input
+            value={register.firstName}
+            onChange={handleFormData}
+            id='name'
+            name="firstName"
+            type="text"
+            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="First Name" />
+          </div>
+
+          <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
+            <label htmlFor='lastname' className="text-nameSize text-textsColor-texts font-bold  select-none">Last Name</label>
+            <input
+            value={register.lastName}
+            onChange={handleFormData}
+            id='lastname'
+            name="lastName"
+            type="text"
+            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="Last Name" />
+          </div>
+
+          <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
+            <label htmlFor='email' className="text-nameSize text-textsColor-texts font-bold  select-none">Email</label>
+            <input
+            value={register.email}
+            onChange={handleFormData}
+            id='email'
+            name="email"
+            type="email"
+            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="@email.com" />
           </div>
 
           <div className="w-full flex flex-col items-start justify-center gap-y-2 relative">
             <label htmlFor='password' className="text-nameSize text-textsColor-texts font-bold select-none">Password</label>
-            <input id='password' name="password" type={`${hide ? "password" : "text"}`} className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" />
+            <input
+            id='password'
+            name="password"
+            value={register.password}
+            onChange={handleFormData}
+            type={`${hide ? "password" : "text"}`}
+            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="Password" />
+
             <div
             onClick={hideButton}
             className="absolute top-[44px] right-2 cursor-pointer ">
 
               {
                 hide ? (
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.9998 20.2707C15.5298 20.2707 18.8198 18.1907 21.1098 14.5907C22.0098 13.1807 22.0098 10.8107 21.1098 9.4007C18.8198 5.8007 15.5298 3.7207 11.9998 3.7207C8.46984 3.7207 5.17984 5.8007 2.88984 9.4007C1.98984 10.8107 1.98984 13.1807 2.88984 14.5907C5.17984 18.1907 8.46984 20.2707 11.9998 20.2707Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg> 
+                )
+                : (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M14.5299 9.46992L9.46992 14.5299C8.81992 13.8799 8.41992 12.9899 8.41992 11.9999C8.41992 10.0199 10.0199 8.41992 11.9999 8.41992C12.9899 8.41992 13.8799 8.81992 14.5299 9.46992Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M17.8198 5.77047C16.0698 4.45047 14.0698 3.73047 11.9998 3.73047C8.46984 3.73047 5.17984 5.81047 2.88984 9.41047C1.98984 10.8205 1.98984 13.1905 2.88984 14.6005C3.67984 15.8405 4.59984 16.9105 5.59984 17.7705" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,58 +203,65 @@ export default function LogIn() {
                   <path d="M21.9993 2L14.5293 9.47" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 )
-                : (
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M11.9998 20.2707C15.5298 20.2707 18.8198 18.1907 21.1098 14.5907C22.0098 13.1807 22.0098 10.8107 21.1098 9.4007C18.8198 5.8007 15.5298 3.7207 11.9998 3.7207C8.46984 3.7207 5.17984 5.8007 2.88984 9.4007C1.98984 10.8107 1.98984 13.1807 2.88984 14.5907C5.17984 18.1907 8.46984 20.2707 11.9998 20.2707Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg> 
-                )
               }
               
 
 
             </div>
-
           </div>
-
-          <div className="w-full flex flex-row justify-between items-center select-none ">
-              <input 
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className="hidden" type="checkbox" name="remember" id="remember" />
-              <label className="cursor-pointer flex flex-row justify-start items-center gap-x-2" htmlFor="remember">
-                {rememberMe ? (
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="24" height="24" rx="4" stroke="#1481FE"/>
-                    <path d="M6 14L10 18L20 8" stroke="#1481FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+         
+          <div ref={selectRef2} className="w-full flex flex-col items-start justify-center gap-y-2 relative">
+                <span className="text-nameSize text-textsColor-texts font-bold  select-none">Countery</span>
+                
+                <div
+                  onClick={() => setIsOpen2(!isOpen2)}
+                  className="w-full cursor-pointer hover:scale-x-[0.99] bg-componentBg-inputBg text-textsColor-texts text-nameSize font-bold px-4 py-3 rounded-[8px] outline-none border-none transition-all duration-300 ease-linear flex flex-row justify-between items-center"
+                >
+                  <span>{register.countery ? register.countery : "Select Countery"}</span>
+                  <svg
+                    className={`${isOpen2 ? "rotate-180" : "rotate-0"} transition-all duration-200 ease-linear`}
+                    width="18"
+                    height="9"
+                    viewBox="0 0 18 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.9201 0.950195L10.4001 7.4702C9.63008 8.2402 8.37008 8.2402 7.60008 7.4702L1.08008 0.950195"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
-                )
-                 :(
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="24" height="24" rx="4" stroke="white"/>
-                  </svg>
-                 )
-                }
-                <span className="text-textsColor-texts text-nameSize font-medium ">Remember me</span>
-              </label>
-               
-            <div className="">
-              <span className="text-nameSize select-none text-btnColors-Mailblue font-medium underline underline-offset-[2px] cursor-pointer">Forget Pasword</span>
-            </div>
-          </div>
-
-          <div className="w-full">
-            <button onClick={handleLogin} className="text-textsColor-texts text-nameSize font-bold py-3 px-4 w-full bg-btnColors-Mailblue rounded-[8px] cursor-pointer hover:scale-x-[0.99] hover:bg-btnColors-Mailblue/80 transition-all duration-300 ease-linear"><span className="select-none">Sign in</span></button>
-          </div>
-
-          <div className="w-full flex flex-row justify-start items-center gap-x-12 select-none">
-            <div className="w-[48px] h-[48px] rounded-full bg-componentBg-buttonBg cursor-pointer flex justify-center items-center">
-              <img className="object-cover w-[28px] h-[28px]" src={'https://s3-alpha-sig.figma.com/img/7c97/c654/c8c3099ebf31fee900c92a985399f3f1?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=SePz3B7A3Z8FGzXnAayXeW2piyH~TGYVHIOAWBlcFjP3O-plR5mrc8PZCoz1MXBoCxP3H~yGAD~sOrlXkzmMhCigFXlrSuj8qUXyLBp9hwjaPB2wJ-oVOLQ80-KFuB5OMnw1~qxA9ZS2KHjevKfwwX2CH4bpDXtjPE6VVa~89kcDyjazJbqHVo8aluTLUjub3z~nKp3zA-i6Uzhubki3oZzHisCiI0ui1LUVL1bJdkedu0kf8GATxZ8zfQ-e2G7Gfl2nc7PupD93dUvIPV16~Q6zGtt6dP-q1evrtBSB9gt1GoKe2xaH5u08amv5~YS8lngmCWzsjjTdvNfFKyOLbQ__'} alt="" />
-            </div>
-            <div className="w-[48px] h-[48px] rounded-full bg-componentBg-buttonBg cursor-pointer flex justify-center items-center">
-              <img className="object-cover w-[28px] h-[28px]" src={'https://s3-alpha-sig.figma.com/img/c680/2aaa/b1baf59ae3a815ec4b5a8818ebffbdb3?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=obb9xUAX49UOCDM-hhSnfV7GpEQvYbYIqV-be2mY2S-e0VSOwEXZ-4Kz9hPOQEVWgy3rpA38kDf-UUcOjcIKHNEXse9NrUWKI3ZR3yDQ1Cbubrj4nPQ8R~DFmbZhRPL2~ufm448VcCPQhHUQ93CDzyhY33PzkHElJf4xpCl2wi0o5nfrJ9LycFI9Tmj4pLSu7yGS71kG1a6HVffi7Y0vSaY2D1riGGzrab9Vq7luu7Yl0mxSCFXqlSETIE5xgLx6dYDn1U5yqs8s2Fn3OKSHM2tmBKzEggPrEMz~7FEDPVu0P4peOoZ7Z~3bdDZaVVirl3nJ0Kx8SavkcmImUNC4ag__'} alt="" />
-            </div>
-
+                </div>
+                <AnimatePresence>
+                  {isOpen2 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="w-full h-[120px] bg-componentBg-inputBg text-textsColor-texts absolute -top-24 flex flex-col justify-start items-stretch rounded-[8px] overflow overflow-hidden"
+                    >
+                      {['iran' , 'iraq' , 'american' , 'england' , 'italy' , 'france' , 'germany' , 'canada' , 'soudi'].map((item) => (
+                        <motion.span
+                          key={item}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => {
+                            setRegister((prev) => ({ ...prev, countery: e.target.textContent }));
+                            setIsOpen(false);
+                          }}
+                          className="px-4 py-2 text-textsColor-texts text-nameSize font-light hover:bg-btnColors-Mailblue hover:text-white transition-all duration-200 ease-linear rounded-[8px] cursor-pointer"
+                        >
+                          {item}
+                        </motion.span>
+                      ))}
+                    </motion.div>
+                  )}
+            </AnimatePresence>
           </div>
 
         </div>
@@ -119,7 +270,7 @@ export default function LogIn() {
 
       <div className="w-[65%] select-none flex flex-col items-center justify-end">
         <img
-          className="max-w-full h-[780px] object-contain z-20"
+          className="max-w-full h-[780px] object-contain z-20 fixed bottom-0"
           src={'https://s3-alpha-sig.figma.com/img/2a43/0b54/0767922a4d366ada75ad4bee211ec42e?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nNSN89tq6QqwRvli29kzdpenzADu66fjmjwQGuxikHPZxYHWqhxTNLi431EbHh9PwEmnjjO7mremJ95L5rhpdcnmshAfOAFM4wEBK6BsKFsPt3jvwxtje01vHneRoWvsK6Waotmn6ByBPZCJVCD2JfNIs5CuzX61drUd762vSK58DWkQ26FX0x2~5tYoxG5gdtSgDOh~Hd5kce2cjVvCMqa74arb0v5TkRFp8RgsVoykOXDxPdZMBOqhzMgOcyPZ3gDL72u7R92w--PsYmuQ25K8-~eVTKewruB2gIl8mcALRWWGwmZo5qFQJNjoZGyQsa9BRVBtNYa-H9GTmtwBew__'}
           alt=""
         />
@@ -129,13 +280,13 @@ export default function LogIn() {
           alt=""
         /> */}
         <img
-          className=" z-10 w-[500px] h-[500px] absolute top-[50px] right-[120px]"
+          className=" z-10 w-[500px] h-[500px] fixed top-[50px] right-[120px]"
           src={'https://s3-alpha-sig.figma.com/img/6cce/8e77/f7bfeb256445176c7e9cb58c61066b0f?Expires=1739145600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QN-NmRQYisHN6kmsSAMrORSEmAHrNjgtPnDke1BJu~CzvIx3Rdjva~f3InBUM8suBJzvlzBFUcJo5OHUj-gNLPz4NxMPb8~2ZEOwj-s8j9-PiSM1K0ioGtyCpGRgtFw~7j~Zqt7wq6fztzNjC9U92qWPjsWQptSod-LTd5nJx5L43GAX0ulCKAxIWkPnPnYemkasCzHy5yd27ly3LTcJt9wed8rc~gA60UQI5U67bSugCEjcHWl330uf-kQ17SBWOzOHFqDEhgAf~fp7EnYVy22oc1GnTW-GZyeHBc67rKN3VQ2CwblqfUvZnpwoC0obyYNfqISzOy9s9hxuaaw-JQ__'}
           alt=""
         />
       </div>
 
-      <div className="w-[600px] h-[600px] select-none bg-btnColors-Mailblue/20 absolute top-[-250px] right-[-250px] rounded-full blur-[80px]"></div>
+      <div className="w-[600px] h-[600px] select-none bg-btnColors-Mailblue/20 fixed top-[-250px] right-[-250px] rounded-full blur-[80px]"></div>
 
     </div>
 

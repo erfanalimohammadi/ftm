@@ -17,6 +17,9 @@ import TradingJournal from "./componets/Trading-Journal";
 import { useParams } from "react-router-dom";
 
 export default function Analisys(){
+    const handleSelectChange = (value) => {
+        console.log("انتخاب شد:", value);
+      };
 
     const {id} = useParams()
 
@@ -43,7 +46,7 @@ export default function Analisys(){
                         <Statistics/>
                         <DailySummary/>
                     </div>
-                    <TradingJournal/>
+                    <TradingJournal options={['option 1' , 'option 2' , 'option 3' , 'option 4']} onChange={handleSelectChange}/>
                     <div className="w-full px-8 py-6 bg-btnColors-Mailblue shadow-[0px_0px_10px_#1481FE] rounded-[12px]">
                         <p className="text-nameSize text-textsColor-texts font-medium text-justify">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

@@ -1,4 +1,5 @@
 import React , {useState, useRef , useEffect} from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function TradingJournal({options, onChange }){
 
@@ -65,26 +66,26 @@ export default function TradingJournal({options, onChange }){
     ]
 
     const [ isOpen , setIsOpen] = useState(false)
-    // const [selected, setSelected] = useState(options[0]); 
-    // const selectRef = useRef(null);
+    const [selected, setSelected] = useState(options[0]); 
+    const selectRef = useRef(null);
   
     
-    // const handleSelect = (option) => {
-    //   setSelected(option);
-    //   setIsOpen(false);
-    //   onChange(option); // 
-    // };
+    const handleSelect = (option) => {
+      setSelected(option);
+      setIsOpen(false);
+      onChange(option); // 
+    };
 
-    // const handleClickOutside = (e) => {
-    //     if (selectRef.current && !selectRef.current.contains(e.target)) {
-    //       setIsOpen(false);
-    //     }
-    //   };
+    const handleClickOutside = (e) => {
+        if (selectRef.current && !selectRef.current.contains(e.target)) {
+          setIsOpen(false);
+        }
+      };
 
-    // useEffect(() => {
-    //     document.addEventListener("mousedown", handleClickOutside);
-    //     return () => document.removeEventListener("mousedown", handleClickOutside);
-    // }, []);
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return(
         <div className="w-full flex flex-col justify-center items-start gap-y-4">
@@ -104,8 +105,9 @@ export default function TradingJournal({options, onChange }){
                         <div className="w-[49%] flex flex-col justify-start items-start gap-y-4">
                             <span className="lable text-nameSize text-textsColor-texts font-medium">Order</span>
                             <div
+                            ref={selectRef}
                             onClick={() => setIsOpen(!isOpen)}
-                            className="w-full hover:scale-[0.99] transition-all duration-300 ease-linesr bg-componentBg-inputBg flex flex-row justify-between cursor-pointer items-center px-6 py-3 rounded-[4px]">
+                            className="w-full hover:scale-[0.99] transition-all duration-300 ease-linesr bg-componentBg-inputBg flex flex-row justify-between cursor-pointer items-center px-6 py-3 rounded-[4px] relative">
                                 <span className="text-nameSize text-textsColor-texts font-medium flex flex-row justify-start items-center gap-x-1 ">
                                     Close Time
                                     
@@ -115,12 +117,36 @@ export default function TradingJournal({options, onChange }){
                                     </svg>
 
                                 </span>
-                                <span className={`${isOpen ? "rotate-180" : "rotate-0"} transition-all duration-300 ease-linear text-nameSize text-textsColor-texts font-medium cursor-pointer`}> 
+                                <span className={`${isOpen ? "rotate-180" : "rotate-0"} transition-all duration-200 ease-linear text-nameSize text-textsColor-texts font-medium cursor-pointer`}> 
                                     <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16.9201 0.950195L10.4001 7.4702C9.63008 8.2402 8.37008 8.2402 7.60008 7.4702L1.08008 0.950195" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg> 
                                 </span>
-                                <div className=""></div>
+                                <div className={` w-full absolute bottom-0 left-0`}>
+                                <AnimatePresence>
+                                    {isOpen && (
+                                    <motion.ul
+                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                                        className="absolute left-0 w-full mt-2 bg-componentBg-inputBg border border-none rounded-[4px] z-20"
+                                    >
+                                        {options.map((option, index) => (
+                                        <motion.li
+                                            key={index}
+                                            className="p-3 cursor-pointer text-textsColor-texts hover:bg-btnColors-Mailblue hover:text-white"
+                                            onClick={() => handleSelect(option)}
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            {option}
+                                        </motion.li>
+                                        ))}
+                                    </motion.ul>
+                                    )}
+                                </AnimatePresence>
+                                </div>
                             </div>
                         </div>
                         <div className="w-[49%] flex flex-col justify-start items-start gap-y-4 relative">
