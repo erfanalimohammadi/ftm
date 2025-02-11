@@ -19,10 +19,10 @@ export default function LogIn() {
   //   window.location.href = "/trader/accountoverview";
   // }
 
-  // const [ hide , setHide ] = useState(true)
-  // const hideButton = () => {
-  //   setHide(!hide)
-  // }
+  const [ hide , setHide ] = useState(true)
+  const hideButton = () => {
+    setHide(!hide)
+  }
 
   //for registration...
 
@@ -37,10 +37,47 @@ export default function LogIn() {
   })
 
   
-    const handleFormData = (e) => {
-        const { name, value } = e.target;
-        setRegister((prev) => ({ ...prev, [name]: value }));
+  
+  const [errors, setErrors] = useState({});
+
+    const validateEmail = (email) => {
+      const emailRegex = /^[^\s@]+@(gmail\.com|yahoo\.com|outlook\.com|email\.com)$/;
+      return emailRegex.test(email);
     };
+
+    const validateName = (name) => {
+      const nameRegex = /^[A-Za-z\u0600-\u06FF]+$/; 
+      return nameRegex.test(name);
+    };
+
+    const validatePassword = (password) => {
+      let errors = [];
+      if (password.length < 11) errors.push("11 characrer");
+      if (!/\d/.test(password)) errors.push("1 number");
+      if (!/[a-z]/.test(password)) errors.push("1 lowercase letter");
+      if (!/[A-Z]/.test(password)) errors.push("1 uppercase letter");
+      if (!/[!@#$%^&*\-_+?><]/.test(password)) errors.push("special characters");
+      return errors;
+    };
+    const handleFormData = (e) => {
+      const { name, value } = e.target;
+      setRegister((prev) => ({ ...prev, [name]: value }));
+      
+      let newErrors = { ...errors };
+  
+      if (name === "email") {
+        newErrors.email = validateEmail(value) ? "" : "Invalid email";
+      }
+      if (name === "firstName" || name === "lastName") {
+        newErrors[name] = validateName(value) ? "" : "Only letters are allowed";
+      }
+      if (name === "password") {
+        newErrors.password = validatePassword(value);
+      }
+      setErrors(newErrors);
+    };
+    
+    // مدیریت تغییرات اینپوت‌ها + اعتبارسنجی لحظه‌ای
 
 //for selectbox of gender
   const [isOpen, setIsOpen] = useState(false);
@@ -66,11 +103,20 @@ export default function LogIn() {
     return () => document.removeEventListener("mousedown", handleClickOutside2);
   }, []);
 
+  const handleSubmitSighUp = (e) => {
+    e.preventDefault();
+    if (Object.values(errors).every(error => error.length === 0) && Object.values(register).every(value => value !== "")) {
+      alert("فرم با موفقیت ارسال شد!");
+    } else {
+      alert("لطفا خطاهای فرم را برطرف کنید.");
+    }
+  };
+
   return (
 
     <div className="w-full min-h-screen bg-componentBg-primeryBg relative flex flex-row justify-center items-center overflow-x-hidden">
 
-      <div className="w-[35%] flex flex-col justify-center items-center mt-8 mb-8 ">
+      <form onSubmit={handleSubmitSighUp} className="w-[35%] flex flex-col justify-center items-center mt-8 mb-8 ">
 
         <div className={`min-w-[473px] max-w-[200px] flex flex-col items-stretch justify-start ${isSignIn ? "gap-y-12" : "gap-y-6" }  `}>
 
@@ -83,7 +129,6 @@ export default function LogIn() {
             onClick={() => setIsSignIn(false)}
             className="z-20 w-[49%] rounded-[4px] flex justify-center items-center text-textsColor-texts text-nameSize font-medium py-2 cursor-pointer select-none"><span className="">Register</span></div>
           </div>
-
 
           <div ref={selectRef} className="w-full flex flex-col items-start justify-center gap-y-2 relative">
                 <span className="text-nameSize text-textsColor-texts font-bold  select-none">Gender</span>
@@ -147,7 +192,8 @@ export default function LogIn() {
             id='name'
             name="firstName"
             type="text"
-            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="First Name" />
+            className={`w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none ${errors.firstName ? 'border-[1px] border-solid border-[#FC3548]' : 'border-none'} focus:scale-x-[0.99] transition-all duration-300 ease-linear`} placeholder="First Name" />
+            {errors.firstName && <span className="p-2 bg-componentBg-inputBg mt-2 rounded-[8px] text-textsColor-texts text-[12px] font-medium border-[1px] border-solid border-[#FC3548]">{errors.firstName}</span>}
           </div>
 
           <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
@@ -158,7 +204,8 @@ export default function LogIn() {
             id='lastname'
             name="lastName"
             type="text"
-            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="Last Name" />
+            className={`w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none ${errors.lastName ? 'border-[1px] border-solid border-[#FC3548]' : 'border-none'} focus:scale-x-[0.99] transition-all duration-300 ease-linear`} placeholder="Last Name" />
+            {errors.lastName && <span className="p-2 bg-componentBg-inputBg mt-2 rounded-[8px] text-textsColor-texts text-[12px] font-medium border-[1px] border-solid border-[#FC3548]">{errors.lastName}</span>}
           </div>
 
           <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
@@ -169,7 +216,8 @@ export default function LogIn() {
             id='email'
             name="email"
             type="email"
-            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="@email.com" />
+            className={`w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none ${errors.email ? 'border-[1px] border-solid border-[#FC3548]' : 'border-none'} focus:scale-x-[0.99] transition-all duration-300 ease-linear`} placeholder="@email.com" />
+            {errors.email && <span className="p-2 bg-componentBg-inputBg mt-2 rounded-[8px] text-textsColor-texts text-[12px] font-medium border-[1px] border-solid border-[#FC3548]">{errors.email}</span>}
           </div>
 
           <div className="w-full flex flex-col items-start justify-center gap-y-2 relative">
@@ -180,7 +228,15 @@ export default function LogIn() {
             value={register.password}
             onChange={handleFormData}
             type={`${hide ? "password" : "text"}`}
-            className="w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none border-none focus:scale-x-[0.99] transition-all duration-300 ease-linear" placeholder="Password" />
+            className={`w-full bg-componentBg-inputBg text-textsColor-texts text-nameSize font-light px-4 py-3 rounded-[8px] outline-none ${errors.password?.length ? "border-[#FC3548] border-solid border-[1px]" : "border-none"} focus:scale-x-[0.99] transition-all duration-300 ease-linear`} placeholder="Password" />
+            {errors.password?.length > 0 && (
+              <div className="flex flex-row w-[80%] flex-wrap justify-start items-start gap-x-2">
+                {errors.password.map((error, index) => (
+                  <span key={index} className="p-2 bg-componentBg-inputBg mt-2 rounded-[8px] text-textsColor-texts text-[12px] font-medium border-[1px] border-solid border-[#FC3548]">{error}</span>
+                ))}
+              </div>
+            )}
+            
 
             <div
             onClick={hideButton}
@@ -264,9 +320,19 @@ export default function LogIn() {
             </AnimatePresence>
           </div>
 
+          <div className="w-full flex flex-col items-start justify-center gap-y-2 ">
+            <button
+              type="submit"
+              className="w-full bg-btnColors-Mailblue hover:bg-btnColors-Mailblue/65 transition-all duration-300 ease-linear text-white text-[18px] font-bold py-2 px-4 rounded-[8px] disabled:bg-btnColors-Mailblue/35"
+              disabled={Object.values(errors).some(error => error.length > 0) || Object.values(register).some(value => value === "")}
+            >
+              {isSignIn ? "Sign in" : "Register"}
+            </button>
+          </div>
+
         </div>
 
-      </div>
+      </form>
 
       <div className="w-[65%] select-none flex flex-col items-center justify-end">
         <img

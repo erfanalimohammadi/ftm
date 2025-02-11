@@ -70,7 +70,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/trader/accountoverview/*" element={<PrivateRoute><Account/></PrivateRoute>} />
-            <Route path="/users/login" element={<LogIn/>}/>
+            <Route path="/users/:sing" element={<LogIn/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
       </Suspense>
