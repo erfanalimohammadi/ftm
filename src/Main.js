@@ -56,11 +56,28 @@ const LogIn = lazy(() => import("./signUp-signIn-pages/sign-in"));
 const Account = lazy(() => import("./Accounts-Page/index-Of-Account"));
 
 
-const PrivateRoute = ({ children }) => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  return isAuthenticated ? children : <Navigate to="/users/login" replace />;
-};
+// const PrivateRoute = ({ children }) => {
+//   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+//   return isAuthenticated ? children : <Navigate to="/users/login" replace />;
+// };
 
+// function App() {
+//   return (
+//     <Provider store={store}>
+//       <BrowserRouter>
+//       <Suspense fallback={<div>Loading...</div>}>
+//       {/* به زودی در این قسمت لودیمگ قرار خواهیم داد... */}
+//           <Routes>
+//             <Route path="/" element={<Homepage />} />
+//             <Route path="/trader/accountoverview/*" element={<PrivateRoute><Account/></PrivateRoute>} />
+//             {/* <Route path="/users/:sing" element={<LogIn/>}/> */}
+//             <Route path="*" element={<NotFound />} />
+//           </Routes>
+//       </Suspense>
+//       </BrowserRouter>
+//     </Provider>
+//   );
+// }
 function App() {
   return (
     <Provider store={store}>
@@ -69,7 +86,7 @@ function App() {
       {/* به زودی در این قسمت لودیمگ قرار خواهیم داد... */}
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/trader/accountoverview/*" element={<PrivateRoute><Account/></PrivateRoute>} />
+            <Route path="/trader/accountoverview/*" element={<Account/>} />
             <Route path="/users/:sing" element={<LogIn/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -78,5 +95,4 @@ function App() {
     </Provider>
   );
 }
-
 export default App ;

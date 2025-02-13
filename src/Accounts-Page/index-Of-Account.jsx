@@ -35,10 +35,10 @@ import Accounts2 from "./index-Of-Accounts2";
 import PaymentPage from "../Payment-Page/index-Of-Payment";
 
 
-const PrivateRoute = ({ children }) => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  return isAuthenticated ? children : <Navigate to="/users/login" replace />;
-};
+// const PrivateRoute = ({ children }) => {
+//   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+//   return isAuthenticated ? children : <Navigate to="/users/login" replace />;
+// };
 
 export default function TraderAccountOverview() {
   const { routes } = useSelector((state) => state.breadcrumb);
@@ -52,22 +52,42 @@ export default function TraderAccountOverview() {
     PaymentPage: PaymentPage,
   };
 
-  return (
-    <div>
-        <Routes>
-        {routes.map((route) => {
-            const Component = componentsMap[route.address];
-            return (
-            <Route
-                key={route.path}
-                path={`${route.path}`}
-                element={<PrivateRoute><Component/></PrivateRoute>}
-            />
-            );
-        })}
-        <Route path="/" element={<PrivateRoute><Accounts2/></PrivateRoute>} />
-        <Route path="*" element={<NotFound />} />
-        </Routes>
-    </div>
-  );
+//   return (
+//     <div>
+//         <Routes>
+//         {routes.map((route) => {
+//             const Component = componentsMap[route.address];
+//             return (
+//             <Route
+//                 key={route.path}
+//                 path={`${route.path}`}
+//                 element={<PrivateRoute><Component/></PrivateRoute>}
+//             />
+//             );
+//         })}
+//         <Route path="/" element={<PrivateRoute><Accounts2/></PrivateRoute>} />
+//         <Route path="*" element={<NotFound />} />
+//         </Routes>
+//     </div>
+//   );
+// }
+
+return (
+  <div>
+      <Routes>
+      {routes.map((route) => {
+          const Component = componentsMap[route.address];
+          return (
+          <Route
+              key={route.path}
+              path={`${route.path}`}
+              element={<Component/>}
+          />
+          );
+      })}
+      <Route path="/" element={<Accounts2/>} />
+      <Route path="*" element={<NotFound />} />
+      </Routes>
+  </div>
+);
 }
