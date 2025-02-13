@@ -8,7 +8,9 @@ export default function Links({ title }) {
         { path: "trader/accountoverview/analisys/5", text: "Analysis Report" },
         { path: "trader/accountoverview/shopping", text: "Shopping Overview" },
         { path: "trader/accountoverview/freeshopping", text: "Free Shopping" },
-        { path: "trader/accountoverview/shopping/payment", text: "Payment" }
+        { path: "trader/accountoverview/shopping/payment", text: "Payment" },
+        {path: "trader/accountoverview" , text:"account"},
+        // {path: "users/login", text:'login'}
     ];
     
 
