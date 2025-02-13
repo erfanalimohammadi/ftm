@@ -7,6 +7,7 @@
 // import NotFound from "./NotFound/NotFound";
 
 // import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+// import { HashRouter as BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 // import { Provider, useDispatch } from "react-redux";
 // import store from "./Redux/store";
@@ -46,7 +47,8 @@
 //   );
 // }
 import React , {lazy , Suspense} from "react";
-import { BrowserRouter, Routes, Route , Navigate } from "react-router-dom";
+import { HashRouter as BrowserRouter, Routes, Route , Navigate } from "react-router-dom";
+// import { BrowserRouter, Routes, Route , Navigate } from "react-router-dom";
 import NotFound from "./NotFound/NotFound";
 import store from "./Redux/store";
 import { Provider , useSelector } from "react-redux";
